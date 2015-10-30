@@ -8,17 +8,17 @@ public class Substrings
         System.out.println( "Random string: " );
         String sent = scan.next();
         int len = sent.length();
-        int k = 0;
-        for(int i = 1; i != len + 1; i++)
+        int i = 1;
+        for(int k = 0; k <= len; k++)
         {
-            String sub = sent.substring(k,i);
-            System.out.println(sub);
-            k++;
-        }
-        for(int j = 1; j != len; j++)
-        {
-            String sub2 = sent.substring(1,j);
-            System.out.println(sub2);
+            int g = 0;
+            for(int a = i; a <= len; a++)
+            {
+                String sub = sent.substring(g,a);
+                System.out.println(sub);
+                g++;
+            }
+            i++;
         }
     }
 }
