@@ -1,10 +1,6 @@
 import java.util.Scanner;
 
-/**
- * Demonstrates the use of nested while loops.
- * 
- * @author Lewis/Loftus/Cocking
- */
+
 public class PalindromeTester
 {
     /**
@@ -24,20 +20,37 @@ public class PalindromeTester
 
          left = 0;
          right = str.length() - 1;
-
-         while (str.charAt(left) == str.charAt(right) && left < right)
+         for(int i = 0; i != str.length(); i++)
          {
-            left++;
-            right--;
+             if(left < right && str.charAt(left) == str.charAt(right))
+             {
+                 left++;
+                 right--;
+             }
+             if(left < right && str.charAt(left) != str.charAt(right))
+             {
+                 if(str.charAt(left) == ' ' )
+                 {
+                     left++;
+                 }
+                 else if(str.charAt(right) == ' ' )
+                 {
+                     right--;
+                 }
+             }
          }
+         
 
          System.out.println();
 
          if (left < right)
+         {
             System.out.println ("That string is NOT a palindrome.");
+         }
          else
+         {
             System.out.println ("That string IS a palindrome.");
-
+         }
          System.out.println();
          System.out.print ("Test another palindrome (y/n)? ");
          another = s.nextLine();
