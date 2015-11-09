@@ -9,17 +9,17 @@ import info.gridworld.grid.Location;
  * Game of Life starter code. Demonstrates how to create and populate the game using the GridWorld framework.
  * Also demonstrates how to provide accessor methods to make the class testable by unit tests.
  * 
- * @author @gcschmit
- * @version 18 July 2014
+ * @author @ajsouhrada
+ * @version 9 November 2015
  */
 public class GameOfLife
 {
     // the world comprised of the grid that displays the graphics for the game
     private ActorWorld world;
     
-    // the game board will have 5 rows and 5 columns
-    private final int ROWS = 5;
-    private final int COLS = 5;
+    // the game board will have 8 rows and 8 columns
+    private final int ROWS = 8;
+    private final int COLS = 8;
     
     /**
      * Default constructor for objects of class GameOfLife
@@ -53,15 +53,18 @@ public class GameOfLife
     private void populateGame()
     {
         // constants for the location of the three cells initially alive
-        final int X1 = 2, Y1 = 0;
-        final int X2 = 0, Y2 = 2;
-        final int X3 = 1, Y3 = 2;
+        final int X1 = 4, Y1 = 2;
+        final int X2 = 4, Y2 = 3;
+        final int X3 = 4, Y3 = 5;
+        final int X4 = 5, Y4 = 4;
+        final int X5 = 5, Y5 = 5;
+        final int X6 = 6, Y6 = 5;
 
         // the grid of Actors that maintains the state of the game
         //  (alive cells contains actors; dead cells do not)
         Grid<Actor> grid = world.getGrid();
         
-        // create and add rocks (a type of Actor) to the three intial locations
+        // create and add rocks (a type of Actor) to the six intial locations
         Rock rock1 = new Rock();
         Location loc1 = new Location(Y1, X1);
         grid.put(loc1, rock1);
@@ -73,6 +76,18 @@ public class GameOfLife
         Rock rock3 = new Rock();
         Location loc3 = new Location(Y3, X3);
         grid.put(loc3, rock3);
+        
+        Rock rock4 = new Rock();
+        Location loc4 = new Location(Y4, X4);
+        grid.put(loc4, rock4);
+        
+        Rock rock5 = new Rock();
+        Location loc5 = new Location(Y5, X5);
+        grid.put(loc5, rock5);
+        
+        Rock rock6 = new Rock();
+        Location loc6 = new Location(Y6, X6);
+        grid.put(loc6, rock6);
     }
 
     /**

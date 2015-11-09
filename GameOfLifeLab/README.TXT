@@ -81,6 +81,10 @@ _______________________________________________________________________________ 
 
 Requirements:
 
-* The grid is 40x40 and is not boundless.
-* Live cells are blue.
-* Dead cells are red.
+* The grid is 8x8 and is not boundless.
+* Live cells are O.
+* Dead cells are X.
+* 
+* The game runs for 4 generations then prompts the user if they want to continue
+* Each generation is 10 seconds
+* 
