@@ -81,7 +81,7 @@ _______________________________________________________________________________ 
 
 Requirements:
 
-* The grid is 8x8 and is not boundless.
+* The grid is 9 x 9 and is not boundless.
 * Live cells are O.
 * Dead cells are X.
 * 

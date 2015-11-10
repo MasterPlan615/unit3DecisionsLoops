@@ -4,6 +4,7 @@ import info.gridworld.actor.Rock;
 import info.gridworld.grid.Grid;
 import info.gridworld.grid.BoundedGrid;
 import info.gridworld.grid.Location;
+import java.util.ArrayList;
 
 /**
  * Game of Life starter code. Demonstrates how to create and populate the game using the GridWorld framework.
@@ -18,8 +19,8 @@ public class GameOfLife
     private ActorWorld world;
     
     // the game board will have 8 rows and 8 columns
-    private final int ROWS = 8;
-    private final int COLS = 8;
+    private final int ROWS = 9;
+    private final int COLS = 9;
     
     /**
      * Default constructor for objects of class GameOfLife
@@ -108,7 +109,14 @@ public class GameOfLife
         Grid<Actor> grid = world.getGrid();
         
         // insert magic here...
-        
+        ArrayList all_loc = new ArrayList();
+        all_loc = grid.getOccupiedLocations();
+        Object check = new Object(); // iterate through array
+        for(int i = 0; i <= all_loc.size(); i++)
+        {
+            check = all_loc.get(i);
+            
+        }
     }
     
     /**
