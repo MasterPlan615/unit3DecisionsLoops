@@ -54,12 +54,12 @@ public class GameOfLife
     private void populateGame()
     {
         // constants for the location of the three cells initially alive
-        final int X1 = 4, Y1 = 2;
-        final int X2 = 4, Y2 = 3;
-        final int X3 = 4, Y3 = 5;
-        final int X4 = 5, Y4 = 4;
+        final int X1 = 2, Y1 = 4;
+        final int X2 = 3, Y2 = 4;
+        final int X3 = 5, Y3 = 4;
+        final int X4 = 4, Y4 = 5;
         final int X5 = 5, Y5 = 5;
-        final int X6 = 6, Y6 = 5;
+        final int X6 = 5, Y6 = 6;
 
         // the grid of Actors that maintains the state of the game
         //  (alive cells contains actors; dead cells do not)
@@ -99,7 +99,7 @@ public class GameOfLife
      * @post    the world has been populated with a new grid containing the next generation
      * 
      */
-    private void createNextGeneration()
+    public void createNextGeneration()
     {
         /** You will need to read the documentation for the World, Grid, and Location classes
          *      in order to implement the Game of Life algorithm and leverage the GridWorld framework.
@@ -109,13 +109,17 @@ public class GameOfLife
         Grid<Actor> grid = world.getGrid();
         
         // insert magic here...
-        ArrayList all_loc = new ArrayList();
+        ArrayList<Location> all_loc = new ArrayList<Location>();
         all_loc = grid.getOccupiedLocations();
-        Object check = new Object(); // iterate through array
         for(int i = 0; i <= all_loc.size(); i++)
-        {
-            check = all_loc.get(i);
-            
+        { 
+            ArrayList<Location> check = new ArrayList<Location>();
+            check = grid.getValidAdjacentLocations(all_loc.get(i));//fix! all_loc should not use .get (incorrect method)
+            int required = check.size();
+            if(required != 2 || required != 3)
+            {
+                world.remove(all_loc.get(i));
+            }
         }
     }
     
