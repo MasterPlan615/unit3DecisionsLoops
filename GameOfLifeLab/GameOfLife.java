@@ -118,7 +118,7 @@ public class GameOfLife
             int required = check.size();
             if(required != 2 || required != 3)
             {
-                world.remove(all_loc.get(i));
+                grid.remove(all_loc.get(i));
             }
         }
     }
