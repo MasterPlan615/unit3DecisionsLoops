@@ -18,7 +18,7 @@ public class GameOfLife
     // the world comprised of the grid that displays the graphics for the game
     private ActorWorld world;
     
-    // the game board will have 8 rows and 8 columns
+    // the game board will have 9 rows and 9 columns
     private final int ROWS = 9;
     private final int COLS = 9;
     
@@ -54,12 +54,12 @@ public class GameOfLife
     private void populateGame()
     {
         // constants for the location of the three cells initially alive
-        final int X1 = 2, Y1 = 4;
-        final int X2 = 3, Y2 = 4;
-        final int X3 = 5, Y3 = 4;
-        final int X4 = 4, Y4 = 5;
-        final int X5 = 5, Y5 = 5;
-        final int X6 = 5, Y6 = 6;
+        final int Y1 = 4, X1 = 2;
+        final int Y2 = 4, X2 = 3;
+        final int Y3 = 4, X3 = 5;
+        final int Y4 = 5, X4 = 4;
+        final int Y5 = 5, X5 = 5;
+        final int Y6 = 6, X6 = 5;
 
         // the grid of Actors that maintains the state of the game
         //  (alive cells contains actors; dead cells do not)
@@ -109,20 +109,25 @@ public class GameOfLife
         Grid<Actor> grid = world.getGrid();
         
         // insert magic here...
-        ArrayList<Location> all_loc = new ArrayList<Location>();
-        all_loc = grid.getOccupiedLocations();
-        for(int i = 0; i <= all_loc.size(); i++)
-        { 
-            ArrayList<Location> check = new ArrayList<Location>();
-            check = grid.getValidAdjacentLocations(all_loc.get(i));//fix! all_loc should not use .get (incorrect method)
-            int required = check.size();
-            if(required != 2 || required != 3)
+        Actor check = new Actor();
+        ArrayList<Location> near = new ArrayList<Location>();
+        for(int ROW2 = 0; ROW2 <= ROWS; ROW2++)
+        {
+            for(int COL2 = 0; COL2 <= COLS; COL2++)
             {
-                grid.remove(all_loc.get(i));
+                Location check_grid = new Location(ROW2,COL2);
+                check = grid.get(check_grid);
+                if(check != null)
+                {
+                    near = grid.getOccupiedAdjacentLocations(check_grid);
+                    if(near.size() != 2 || near.size() != 3)
+                    {
+                        grid.remove(check_grid);
+                    }
+                }
             }
         }
     }
-    
     /**
      * Returns the actor at the specified row and column. Intended to be used for unit testing.
      *
