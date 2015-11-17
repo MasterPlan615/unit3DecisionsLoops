@@ -1,0 +1,10 @@
+Andrew Souhrada
+Period 8
+
+I enjoyed the entire lab as Conway's Game of Life is something I've been interested in for some
+time; I recall my friend Jonathan and I working in 8th grade math trying to figure out algorithms
+for the game. It was quite confusing of a lab and although at first I disliked it, I came to find
+lab a proper learning experience. It surprised me the amount of things you tend to forget in programming.
+Even the most simplest things can slip the mind and I found myself focusing too much on the complex
+parts instead of the more important simplistic parts. My advice is just like I said so instead
+I will use a quote, "If you can't explain it simply, you don't understand it well enough." - Albert Einstein

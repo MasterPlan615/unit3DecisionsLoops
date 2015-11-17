@@ -84,7 +84,6 @@ Requirements:
 * The grid is 9 x 9 and is not boundless.
 * Live cells are O.
 * Dead cells are X.
-* 
-* The game runs for 4 generations then prompts the user if they want to continue
-* Each generation is 10 seconds
-* 
+* The pattern displayed is shown in the Test class (under the initial test) and the pattern is hardcoded
+* The game runs for 10 generations
+* Each generation is 1 second

@@ -100,33 +100,41 @@ public class GameOfLife
      * 
      */
     public void createNextGeneration()
-    {
-        /** You will need to read the documentation for the World, Grid, and Location classes
-         *      in order to implement the Game of Life algorithm and leverage the GridWorld framework.
-         */
-        
+    {   
         // create the grid, of the specified size, that contains Actors
         Grid<Actor> grid = world.getGrid();
+        BoundedGrid<Actor> newGrid = new BoundedGrid<Actor>(ROWS,COLS);
         
         // insert magic here...
         Actor check = new Actor();
+        Rock new_rock = new Rock();
         ArrayList<Location> near = new ArrayList<Location>();
-        for(int ROW2 = 0; ROW2 <= ROWS; ROW2++)
+        for(int ROW2 = 0; ROW2 < ROWS; ROW2++)
         {
-            for(int COL2 = 0; COL2 <= COLS; COL2++)
+            for(int COL2 = 0; COL2 < COLS; COL2++)
             {
                 Location check_grid = new Location(ROW2,COL2);
                 check = grid.get(check_grid);
                 if(check != null)
                 {
                     near = grid.getOccupiedAdjacentLocations(check_grid);
-                    if(near.size() != 2 || near.size() != 3)
+                    if(near.size() == 2 || near.size() == 3)
                     {
-                        grid.remove(check_grid);
+                        newGrid.put(check_grid, new_rock);
+                    }
+                }
+                else
+                {
+                    near = grid.getOccupiedAdjacentLocations(check_grid);
+                    if(near.size() == 3)
+                    {
+                        newGrid.put(check_grid, new_rock);
                     }
                 }
             }
         }
+        world.setGrid(newGrid);
+        world.show();
     }
     /**
      * Returns the actor at the specified row and column. Intended to be used for unit testing.
@@ -168,9 +176,14 @@ public class GameOfLife
      * Creates an instance of this class. Provides convenient execution.
      *
      */
-    public static void main(String[] args)
+    public static void main(String[] args) throws InterruptedException
     {
         GameOfLife game = new GameOfLife();
+        for(int i = 1; i < 10; i++)
+        {
+            Thread.sleep(1000);
+            game.createNextGeneration();
+        }
     }
 
 }

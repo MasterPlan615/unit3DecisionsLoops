@@ -90,7 +90,7 @@ public class GameOfLifeTest
     }
 
     @Test
-    public void testFinalState()
+    public void testFinalState() throws InterruptedException
     {
         /* expected pattern for initial state
          *  (O: alive; X: dead)
@@ -99,10 +99,10 @@ public class GameOfLifeTest
          *  0 X X X X X X X X X X
          *  1 X X X X X X X X X X
          *  2 X X X X X X X X X X
-         *  3 X X X X X O O X X X
-         *  4 X X X X X X X O X X
-         *  5 X X X X O O O X X X
-         *  6 X X X X X O X X X X
+         *  3 X X X X X X O O X X
+         *  4 X X X X X X X X O X
+         *  5 X X X X X O O O X X
+         *  6 X X X X X X O X X X
          *  7 X X X X X X X X X X
          *  8 X X X X X X X X X X
          *  9 X X X X X X X X X X
@@ -112,8 +112,9 @@ public class GameOfLifeTest
         GameOfLife game = new GameOfLife();
         final int ROWS = game.getNumRows();
         final int COLS = game.getNumCols();
-        for(int i = 0; i <= 10; i++)
+        for(int i = 1; i < 4; i++)
         {
+            Thread.sleep(1000);
             game.createNextGeneration();
         }
 
@@ -123,15 +124,15 @@ public class GameOfLifeTest
             {
                 // in this example, an alive cell has a non-null actor and a dead cell has a null actor
                 Actor cell = game.getActor(row, col);
-
+    
                 // if the cell at the current row and col should be alive, assert that the actor is not null
                 if(     (row == 4 && col == 5) ||
-                        (row == 5 && col == 5) ||
+                        (row == 4 && col == 6) ||
+                        (row == 5 && col == 7) ||
+                        (row == 6 && col == 4) ||
                         (row == 6 && col == 5) ||
-                        (row == 5 && col == 6) ||
-                        (row == 5 && col == 3) ||
-                        (row == 6 && col == 3) ||
-                        (row == 7 && col == 4))
+                        (row == 6 && col == 6) ||
+                        (row == 7 && col == 5))
                 {
                     assertNotNull("expected alive cell at (" + row + ", " + col + ")", cell);
                 }
